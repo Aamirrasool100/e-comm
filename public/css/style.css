@@ -1,0 +1,53 @@
+*,*::before,*::after{
+    margin:0;
+    padding:0;
+    box-sizing:inherit
+}
+html{
+    font-size:90%;
+}
+body{
+    box-sizing:border-box;
+    padding:1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.container{
+    height:100vh;
+    background-image: linear-gradient(to right bottom,
+    rgba(33, 233, 156,0.8),rgba(0, 128, 64,0.7));
+    background-position: center;
+}
+.box{
+    position:absolute;
+    top:30%;
+    left:40%;
+    transform:translate(-50%,-50%);
+}
+.form{
+    background-color: #fff;
+    margin:0 auto;
+    text-align:center;
+    padding:5rem 3rem;
+    border-radius:10px;
+    box-shadow:0 2rem 4rem rgba(0,0,0,0.15);
+ }
+ .form__input{
+     display: block;
+     margin:1rem;
+     font-size:1.4rem;
+     outline:none;border:none;
+     border-bottom:2px solid #888;
+     padding-bottom:5px;
+     text-transform: capitalize;
+ }
+ .btn-submit{
+     outline:none;border:none;
+     margin-top:1rem;
+     font-size:1.6rem;
+     font-weight:300;
+     padding:.7rem 4rem;
+     background-color: aqua;
+     color:teal;
+     border-radius:10rem;
+     box-shadow:0 2rem 4rem rgba(0,0,0,0.1)
+ }

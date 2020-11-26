@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+<title>Edit Products</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+    <main>
+        <form class="form" action="/admin/edit-product" method="post">
+            <div>
+                <input class="form__input" type="text" name="title" value=<%= product.title %>>
+            </div>
+            <div>
+
+                <input class="form__input" type="number" name="price" value=<%= product.price %> step="0.01">
+            </div>
+            <div>
+
+                <textarea class="form__desc" name="description" id=""  rows="10"><%= product.description %></textarea>
+            </div>
+            <input type="hidden" value="<%= product._id %>" name="id">
+                <button class="form__btn" type="submit">Update Product</button>
+        </form>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

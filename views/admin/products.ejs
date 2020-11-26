@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<title>Admin Product</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+
+    <% if(prods.length > 0){ %>
+    <div class="container-flex">
+        <% prods.map((product) => { %>
+          <div class="product">
+              <h1 class="product__title"><%= product.title %></h1>
+              <img src="https://picsum.photos/200" alt="product">
+              <p class="product__price">$<%= product.price %></p>
+              <p class="product__text"><%= product.description %></p>
+              <a href="/admin/edit-product/<%= product._id %>" class="product__btn">Edit</a>
+              <a href="/admin/delete-product/<%= product._id %>"  class="product__btn">Delete</a>
+          </div>
+         <% }) %>
+    </div>
+    <% } else { %>
+    <h1>No Products To Show</h1>
+    <% } %>
+
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

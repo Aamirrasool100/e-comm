@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<title>Products</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+    <main>
+        <form class="form" action="/admin/add-product" method="post">
+            <div>
+                <input class="form__input" type="text" name="title" placeholder="Title">
+            </div>
+            <div>
+
+                <input class="form__input" type="number" name="price" placeholder="Price" step="0.01">
+            </div>
+            <div>
+
+                <textarea class="form__desc" name="description" id=""  rows="10"></textarea>
+            </div>
+            <button class="form__btn" type="submit">Add Product</button>
+        </form>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

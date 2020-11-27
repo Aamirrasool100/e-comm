@@ -1,5 +1,8 @@
 const User = require('../model/userModel')
 const bcrypt = require('bcryptjs')
+const crypto = require('crypto')
+
+const {welcomeMail,resetPassword} = require('../emails/email')
 
 exports.getRegister = (req, res) => {
     let message = req.flash('error')
@@ -42,6 +45,7 @@ exports.postRegister = async (req, res) => {
         req.session.isLoggedIn = true
         await req.session.save()
         await user.save()
+        welcomeMail(user.email,user.name)
         res.redirect('/login')
     } catch (e) {
         req.flash('error', e)
@@ -67,4 +71,35 @@ exports.postLogout = (req, res) => {
         res.redirect('/login')
 
     })
+}
+exports.getReset = (req,res) =>{
+    let message = req.flash('error')
+    if(message.length > 0){
+         message =message[0]
+    }else{message = null};
+    res.render('auth/reset',{
+        errorMessage:message
+    })
+}
+exports.postReset = (req,res) =>{
+    crypto.randomBytes(32,(err,buffer) =>{
+         if(err){
+             console.log(err);
+            return  res.redirect('/reset')
+         }
+          const token = buffer.toString('hex');
+           User.findOne({email:req.body.email}).then(user =>{
+               if(!user){
+                   req.flash('error',"no account with that email")
+                   return res.redirect('/reset')
+               }
+               user.resetToken = token
+               user.resetTokenExpriration = Date.now() + 3600000
+               user.save().then(result =>{
+                   res.redirect('/')
+                   console.log(token);
+                   resetPassword(req.body.email,token)
+               }).catch(e =>console.log(e))
+           }).catch(e =>console.log(e))
+     })
 }

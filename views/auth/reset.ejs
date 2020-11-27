@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Monoton&family=Montserrat:wght@100;300;400;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Reset Password</title>
     <style>
         body{
             background-color:#eaf7f7;
@@ -20,14 +20,9 @@
         <div class="error"> <%= errorMessage %> </div> 
        <% } %>
     <div class="box"> 
-     <form  class="form" action="/login" method="post">
-          <input class="form__input form__input--email" type="text" name="name" placeholder="Name">
+     <form  class="form" action="/reset" method="post">
           <input class="form__input form__input--email" type="email" name="email" placeholder="Email">
-           <input class="form__input form__input--password" type="password" name="password" placeholder="Password">
-           <a href="/reset" class="reset">Reset Password</a>
-           <div>
-               <button class="btn-submit" type="submit">Login</button>
-        </div>
+         <button class="btn-submit" type="submit">Reset Password</button>
         </form>
 </div>
     

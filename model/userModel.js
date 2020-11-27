@@ -23,7 +23,9 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Password cannot contain letter "password"')
             }
         }
-    }
+    },
+    resetToken:String,
+    resetTokenExpiration:Date
 })
 userSchema.virtual('product',{
     ref:'Product',
